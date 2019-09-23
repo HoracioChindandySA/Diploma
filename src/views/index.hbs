@@ -1,0 +1,53 @@
+<div class="card">
+    <div class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <h3 class=" card-title text-white">
+            <i class="far fa-image"></i> Upload an Image
+        </h3>
+    </div>
+    <div class="card-body">
+        <form action="/images" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" id="inputGroup"
+                            aria-describedby="inputGroupFileAddon" required>
+                        <div class="custom-file-label" for="inputFileGroup">Chose your File</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input title="text" name="text" class="form-control" placeholder="Title for the Image" required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="description" reows="2" placeholder="Description for the image"
+                    require></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success">
+                    <i class="fa fa-upload"></i> Upload Image
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Areas das imagens carregadas-->
+<div class="card mt-2">
+    <div class="navbar-dark bg-primary text-white">
+        <h3><i class="far fa-images"></i> Recent Upload</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {{#each images}}
+            <div class="col-md-4">
+                <!-- uniqueId vem da pasta models no arquivo image e le serve para carregar o nome do objesto sem a extensao-->
+
+                <a href="/images/{{uniqueId}}">
+                    <img src="/public/upload/{{filename}}" alt="" class="w-100 h-100 img-thumbnail">
+                </a>
+
+            </div>
+
+            {{/each}}
+        </div>
+    </div>
+</div>
